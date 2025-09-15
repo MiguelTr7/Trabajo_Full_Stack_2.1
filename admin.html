@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administrador | FerreNova</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo-ferrenova.png" alt="Logo FerreNova">
+      <h1>Admin FerreNova</h1>
+    </div>
+    <nav aria-label="Menú principal">
+      <ul class="menu">
+        <li><a href="index.html">Tienda</a></li>
+        <li><a class="activo" href="admin.html">Administrador</a></li>
+        <li><a href="carrito.html">Carrito</a></li>
+      </ul>
+    </nav>
+    <div class="carrito" aria-hidden="true">
+      <img src="images/carrito-de-compras.png" alt="">
+      <span>Admin</span>
+    </div>
+    <div class="cuenta" id="cuenta" aria-label="Cuenta"></div>
+  </header>
+
+  <main class="admin">
+    <aside class="admin-menu">
+      <h3>Menú</h3>
+      <ul>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#usuarios">Usuarios</a></li>
+        <li><a href="#pedidos">Pedidos</a></li>
+      </ul>
+    </aside>
+
+    <section class="admin-content">
+      <h2>Panel de administración</h2>
+      <p class="sub">Gestiona productos, usuarios y pedidos generados en la tienda.</p>
+
+      <!-- Productos -->
+      <article id="productos" class="admin-box">
+        <h3>Productos</h3>
+
+        <h4>Listado</h4>
+        <div id="admin-products" class="tabla"></div>
+
+        <h4>Nuevo / Editar</h4>
+        <form id="form-producto" class="form form-grid" action="#">
+          <div class="campo">
+            <label for="p-codigo">Código</label>
+            <input id="p-codigo" type="text" placeholder="F-003">
+          </div>
+          <div class="campo">
+            <label for="p-nombre">Nombre</label>
+            <input id="p-nombre" type="text" placeholder="Taladro percutor 13mm">
+          </div>
+          <div class="campo">
+            <label for="p-precio">Precio</label>
+            <input id="p-precio" type="number" step="0.01" placeholder="0">
+          </div>
+          <div class="campo">
+            <label for="p-stock">Stock</label>
+            <input id="p-stock" type="number" placeholder="0">
+          </div>
+          <div class="campo">
+            <label for="p-stockCritico">Stock crítico (opcional)</label>
+            <input id="p-stockCritico" type="number" placeholder="0">
+          </div>
+          <div class="campo">
+            <label for="p-categoria">Categoría</label>
+            <select id="p-categoria">
+              <option>Herramientas</option>
+              <option>Electricidad</option>
+              <option>Construcción</option>
+              <option>Seguridad</option>
+              <option>Pinturas</option>
+            </select>
+          </div>
+          <div class="campo" style="grid-column:1/-1">
+            <label for="p-descripcion">Descripción (opcional)</label>
+            <textarea id="p-descripcion" rows="3" placeholder="Detalle del producto..."></textarea>
+          </div>
+          <button class="btn btn-primario" type="submit">Guardar producto</button>
+        </form>
+      </article>
+
+      <!-- Usuarios -->
+      <article id="usuarios" class="admin-box">
+        <h3>Usuarios</h3>
+
+        <h4>Listado</h4>
+        <div id="admin-users" class="tabla"></div>
+
+        <h4>Nuevo</h4>
+        <form id="form-usuario" class="form form-grid" action="#">
+          <div class="campo">
+            <label for="u-run">RUN</label>
+            <input id="u-run" type="text" placeholder="19011022K">
+          </div>
+          <div class="campo">
+            <label for="u-nombre">Nombre</label>
+            <input id="u-nombre" type="text" placeholder="Nombre">
+          </div>
+          <div class="campo">
+            <label for="u-apellidos">Apellidos</label>
+            <input id="u-apellidos" type="text" placeholder="Apellidos">
+          </div>
+          <div class="campo">
+            <label for="u-correo">Correo</label>
+            <input id="u-correo" type="email" placeholder="tu@duoc.cl">
+          </div>
+          <div class="campo">
+            <label for="u-tipo">Tipo de usuario</label>
+            <select id="u-tipo">
+              <option>Administrador</option>
+              <option>Vendedor</option>
+              <option>Cliente</option>
+            </select>
+          </div>
+          <button class="btn btn-primario" type="submit">Guardar usuario</button>
+        </form>
+      </article>
+
+      <!-- Pedidos -->
+      <article id="pedidos" class="admin-box">
+        <h3>Pedidos</h3>
+        <div id="admin-orders" class="tabla"></div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="inner">
+      <h3 class="footer-brand">FerreNova</h3>
+      <nav aria-label="Categorías">
+        <ul class="footer-links">
+          <li><a href="categoria-herramientas.html">Herramientas</a></li>
+          <li><a href="categoria-electricidad.html">Electricidad</a></li>
+          <li><a href="categoria-construccion.html">Construcción</a></li>
+        </ul>
+      </nav>
+      <form class="suscripcion" action="#">
+        <label class="sr-only" for="email">Suscríbete</label>
+        <input id="email" type="email" placeholder="tu correo" required>
+        <button>Suscribirme</button>
+      </form>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
