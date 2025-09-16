@@ -4,15 +4,29 @@
    - Todo parte pensando en celular y luego mejoro con media queries
  */
 *{ box-sizing:border-box; margin:0; padding:0; }
+
+html, body{
+  height:100%;
+}
+
 body{
   font-family: Arial, Helvetica, sans-serif;
   background:#f4f6f8;   /* gris muy claro para contraste */
   color:#222;           /* texto oscuro, fácil de leer */
   line-height:1.5;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;     /* pantalla completa */
 }
+
 img{ max-width:100%; display:block; } /* imágenes no se salen del contenedor */
 ul{ list-style:none; }                 /* quito viñetas por defecto */
 a{ text-decoration:none; color:inherit; } /* links sin subrayado */
+
+/* el contenido crece para empujar el footer hacia abajo */
+main{
+  flex:1;
+}
 
 /* 
    HEADER (logo + menú + carrito)
@@ -34,7 +48,7 @@ header{
 .logo{ display:flex; align-items:center; gap:8px; }
 .logo img{
   width:40px; height:40px;
-  border-radius:50%;   /* círculo para verse más “marca” */
+  border-radius:50%;   /* círculo para verse más "marca" */
   background:#fff; padding:4px;
 }
 .logo h1{ font-size:20px; }
@@ -137,29 +151,31 @@ header{
 }
 .card img{
   width:100%;
-  height:150px;       /* alto fijo para que todas las cards se vean parejas */
-  object-fit:cover;   /* recorta imagen conservando proporción */
+  height:260px;                 /* antes 150px */
+  object-fit:cover;             /* llena el cuadro (recorta un poco) */
   background:#eee;
   border-radius:8px;
+  display:block;
+  transition: transform .25s ease;
 }
-.card h3{ font-size:16px; }
-.precio{ color:#1e88e5; font-weight:bold; }
-.btn-negro{
-  background:#111; color:#fff;
-  padding:8px 10px;
-  border-radius:6px;
-  margin-top:auto;    /* botón pegado abajo */
+.card:hover img{ transform: scale(1.04); }
+@media (min-width:1000px){
+  .card img{ height:300px; }
 }
+
 .btn-negro:hover{ background:#333; }
 
 /* 
-   FOOTER (grid ordenado)
-   - Desktop: 2 columnas [brand | links] y la suscripción debajo de brand
-   - Móvil: apilado y centrado
+   FOOTER MEJORADO - Combinando ambas versiones
+   - Mantiene el diseño original pero añade más opciones de estilo
  */
 footer{
-  background:#222; color:#ddd; margin-top:20px;
+  background:#222; 
+  color:#ddd; 
+  margin-top:20px;
+  width:100%;              /* asegura ancho completo */
 }
+
 footer .inner{
   width:100%;
   max-width:1100px;
@@ -173,7 +189,13 @@ footer .inner{
     "form  links";
   align-items:center;
 }
-.footer-brand{ grid-area: brand; font-size:16px; }
+
+.footer-brand{ 
+  grid-area: brand; 
+  font-size:16px; 
+  color:#ff6600;           /* color naranja de la rama daniel */
+  font-weight:bold;
+}
 
 /* Links a la derecha */
 .footer-links{
@@ -181,8 +203,17 @@ footer .inner{
   display:flex; gap:10px; flex-wrap:wrap;
   justify-content:flex-end;   /* 👉 a la derecha */
 }
-.footer-links a{ background:#333; padding:6px 10px; border-radius:6px; }
-.footer-links a:hover{ background:#444; }
+.footer-links a{ 
+  background:#333; 
+  padding:6px 10px; 
+  border-radius:6px; 
+  color:white;
+  text-decoration:none;
+}
+.footer-links a:hover{ 
+  background:#444; 
+  color:#ff6600;             /* hover naranja */
+}
 
 /* Formulario de suscripción debajo de la marca */
 .suscripcion{
@@ -204,7 +235,23 @@ footer .inner{
 }
 .suscripcion button:hover{ background:#3a3a3a; }
 
-/* Accesibilidad: etiqueta “solo para lectores de pantalla” */
+/* Información adicional del footer */
+.footer-info {
+  margin: 15px 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.footer-copyright {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #555;
+  font-size: 12px;
+  color: #999;
+  text-align: center;
+}
+
+/* Accesibilidad: etiqueta "solo para lectores de pantalla" */
 .sr-only{
   position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0);
 }
@@ -245,8 +292,21 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   }
   .footer-links{ justify-content:center; }
   .suscripcion{ justify-content:center; }
+  
+  /* Responsive para footer links */
+  .footer-links a {
+    display: block;
+    margin: 5px 0;
+  }
 }
 
+/* Mobile responsive para footer */
+@media (max-width: 600px) {
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 
 /*  títulos y texto de sección  */
 .seccion-titulo{ max-width:1100px; margin:16px auto; padding:0 16px; }
@@ -325,7 +385,6 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   .admin{ grid-template-columns: 1fr; }
 }
 
-
 /* Carrito: 5 columnas (Producto | Precio | Cantidad | Subtotal | Acciones) */
 .tabla.cart .t-row { grid-template-columns: 2fr 1fr 1fr 1fr 1fr; align-items: center; }
 .cart-qty { display:flex; align-items:center; gap:6px; }
@@ -349,95 +408,76 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   outline: none;
 }
 
-
-/*  Cuenta / Sesión en header  */
-.cuenta{
-  display:flex; align-items:center; gap:8px; color:#fff; flex-wrap:wrap;
-}
-.cuenta .user{
-  display:flex; align-items:center; gap:6px; background:rgba(0,0,0,.15);
-  padding:6px 10px; border-radius:999px;
-}
-.cuenta .user img{ width:22px; height:22px; border-radius:50%; background:#fff; }
-.cuenta .email{ font-size:14px; }
-.cuenta .acciones{ display:flex; gap:6px; }
-.btn-link{
-  background:#1565c0; color:#fff; padding:6px 10px; border-radius:6px;
-}
-.btn-link:hover{ background:#0d63b0; }
-
-
 /* Cuenta / Sesión en header */
-.cuenta{ display:flex; align-items:center; gap:8px; color:#fff; flex-wrap:wrap; }
-.cuenta .user{ display:flex; align-items:center; gap:6px; background:rgba(0,0,0,.15); padding:6px 10px; border-radius:999px; }
-.cuenta .user img{ width:22px; height:22px; border-radius:50%; background:#fff; }
+.cuenta{ 
+  display:flex; align-items:center; gap:8px; color:#fff; flex-wrap:wrap; 
+}
+.cuenta .user{ 
+  display:flex; align-items:center; gap:6px; background:rgba(0,0,0,.15); 
+  padding:6px 10px; border-radius:999px; 
+}
+.cuenta .user img{ 
+  width:22px; height:22px; border-radius:50%; background:#fff; 
+}
 .cuenta .email{ font-size:14px; }
 .cuenta .acciones{ display:flex; gap:6px; }
-.btn-link{ background:#1565c0; color:#fff; padding:6px 10px; border-radius:6px; }
+.btn-link{ 
+  background:#1565c0; color:#fff; padding:6px 10px; border-radius:6px; 
+}
 .btn-link:hover{ background:#0d63b0; }
 
 /* Perfil */
-.profile-box{ background:#fff; border:1px solid #e3e7ee; border-radius:10px; padding:12px; margin-bottom:12px; }
-
-.footer {
-  background-color: #333;
-  color: white;
-  padding: 20px 0;
-  text-align: center;
-  margin-top: 40px;
+.profile-box{ 
+  background:#fff; border:1px solid #e3e7ee; border-radius:10px; 
+  padding:12px; margin-bottom:12px; 
 }
 
-.footer-content {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* ===== BLOGS ===== */
+.blogs{
+  max-width:1100px;
+  margin:16px auto 28px;
+  padding:0 16px;
+  display:grid;
+  gap:12px;
+  grid-template-columns: 1fr;         /* 1 columna en móvil */
+}
+@media (min-width:1000px){
+  .blogs{ grid-template-columns: 1fr 1fr; }  /* 2 columnas en desktop */
 }
 
-.footer-brand {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: #ff6600;
+/* imágenes de las cards solo dentro de .blogs */
+.blogs .card img{
+  width:100%;
+  height:260px;               /* más alto para que luzca */
+  object-fit:cover;           /* llena el cuadro (recorta un poco) */
+  object-position:center;     /* centra el encuadre */
+  border-radius:8px;
+  display:block;
+  background:#eee;
+  transition: transform .25s ease;
+}
+.blogs .card:hover img{
+  transform: scale(1.03);     /* pequeño efecto al hover */
 }
 
-.footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 15px 0;
+/* ====== NOSOTROS - imágenes ====== */
+.nosotros-imagenes{
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;       /* móvil: apiladas */
 }
 
-.footer-links li {
-  display: inline-block;
-  margin: 0 15px;
+.nosotros-imagenes img{
+  width: 100%;
+  height: 280px;                    /* ajusta la altura a tu gusto */
+  object-fit: cover;                /* llena el cuadro recortando un poco */
+  border-radius: 10px;
+  display: block;
 }
 
-.footer-links a {
-  color: white;
-  text-decoration: none;
-}
-
-.footer-links a:hover {
-  color: #ff6600;
-}
-
-.footer-info {
-  margin: 15px 0;
-  font-size: 14px;
-  color: #ccc;
-}
-
-.footer-copyright {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #555;
-  font-size: 12px;
-  color: #999;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .footer-links li {
-    display: block;
-    margin: 5px 0;
+@media (min-width:800px){
+  .nosotros-imagenes{
+    grid-template-columns: 1fr 1fr; /* escritorio: 2 columnas */
   }
 }
