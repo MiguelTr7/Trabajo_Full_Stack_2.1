@@ -137,19 +137,18 @@ header{
 }
 .card img{
   width:100%;
-  height:150px;       /* alto fijo para que todas las cards se vean parejas */
-  object-fit:cover;   /* recorta imagen conservando proporción */
+  height:260px;                 /* antes 150px */
+  object-fit:cover;             /* llena el cuadro (recorta un poco) */
   background:#eee;
   border-radius:8px;
+  display:block;
+  transition: transform .25s ease;
 }
-.card h3{ font-size:16px; }
-.precio{ color:#1e88e5; font-weight:bold; }
-.btn-negro{
-  background:#111; color:#fff;
-  padding:8px 10px;
-  border-radius:6px;
-  margin-top:auto;    /* botón pegado abajo */
+.card:hover img{ transform: scale(1.04); }
+@media (min-width:1000px){
+  .card img{ height:300px; }
 }
+
 .btn-negro:hover{ background:#333; }
 
 /* 
