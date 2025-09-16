@@ -378,3 +378,66 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 
 /* Perfil */
 .profile-box{ background:#fff; border:1px solid #e3e7ee; border-radius:10px; padding:12px; margin-bottom:12px; }
+
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-brand {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #ff6600;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+}
+
+.footer-links li {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #ff6600;
+}
+
+.footer-info {
+  margin: 15px 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.footer-copyright {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #555;
+  font-size: 12px;
+  color: #999;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .footer-links li {
+    display: block;
+    margin: 5px 0;
+  }
+}
