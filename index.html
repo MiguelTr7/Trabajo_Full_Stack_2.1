@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FerreNova - Inicio</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
   <!-- HEADER-->
@@ -64,66 +66,72 @@
         <img src="images/martillo.png" alt="Martillo de uña 16oz">
         <h3>Martillo de Uña 16oz</h3>
         <p class="precio">$6.990</p>
-        <a class="btn btn-negro" href="detalleProducto.html">Ver detalle</a>
+        <a class="btn btn-negro" href="detalleProducto.html?id=F001">Ver detalle</a>
       </article>
 
       <article class="card">
         <img src="images/taladro.png" alt="Taladro percutor 13mm 750W">
         <h3>Taladro Percutor 13mm 750W</h3>
         <p class="precio">$44.990</p>
-        <a class="btn btn-negro" href="detalleProducto.html">Ver detalle</a>
+        <a class="btn btn-negro" href="detalleProducto.html?id=F002">Ver detalle</a>
       </article>
 
       <article class="card">
         <img src="images/atornillador-inalambrico.png" alt="Atornillador inalámbrico 12V">
         <h3>Atornillador Inalámbrico 12V</h3>
         <p class="precio">$29.990</p>
-        <a class="btn btn-negro" href="detalleProducto.html">Ver detalle</a>
+        <a class="btn btn-negro" href="detalleProducto.html?id=F003">Ver detalle</a>
       </article>
 
       <article class="card">
         <img src="images/llaves-mixtas-set.png" alt="Set de llaves mixtas 12 piezas">
         <h3>Set Llaves Mixtas (12 pzs)</h3>
         <p class="precio">$18.990</p>
-        <a class="btn btn-negro" href="detalleProducto.html">Ver detalle</a>
+        <a class="btn btn-negro" href="detalleProducto.html?id=F004">Ver detalle</a>
       </article>
 
       <article class="card">
         <img src="images/cemento-saco-25kg.png" alt="Saco de cemento 25 kg">
         <h3>Cemento 25 kg</h3>
         <p class="precio">$5.490</p>
-        <a class="btn btn-negro" href="detalleProducto.html">Ver detalle</a>
+        <a class="btn btn-negro" href="detalleProducto.html?id=F005">Ver detalle</a>
       </article>
 
       <article class="card">
         <img src="images/escalera-aluminio.png" alt="Escalera de aluminio 6 peldaños">
         <h3>Escalera Aluminio 6 peldaños</h3>
         <p class="precio">$59.990</p>
-        <a class="btn btn-negro" href="detalleProducto.html">Ver detalle</a>
+        <a class="btn btn-negro" href="detalleProducto.html?id=F006">Ver detalle</a>
       </article>
     </section>
   </main>
 
-  <!--  FOOTER-->
-  <footer>
-    <div class="inner">
-      <h3 class="footer-brand">FerreNova</h3>
-      <nav aria-label="Categorías">
-        <ul class="footer-links">
-          <li><a href="categoria-herramientas.html">Herramientas</a></li>
-          <li><a href="categoria-electricidad.html">Electricidad</a></li>
-          <li><a href="categoria-construccion.html">Construcción</a></li>
-        </ul>
-      </nav>
-      <form class="suscripcion" action="#" method="post">
-        <label class="sr-only" for="email">Suscríbete al boletín</label>
-        <input id="email" type="email" placeholder="tu correo" required>
-        <button type="submit">Suscribirme</button>
-      </form>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">FerreNova</div>
+
+      <ul class="footer-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="blogs.html">Consejos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+
+      <div class="footer-info">
+        <p>Av. Diego Portales 1234, Puerto Montt | Tel: +56 65 234 5678</p>
+      </div>
+
+      <div class="footer-copyright">
+        <p>&copy; 2024 FerreNova. Todos los derechos reservados.</p>
+      </div>
     </div>
   </footer>
 
   <!-- JS del carrito actualiza contador en el header -->
+  <script src="js/productos.js"></script>
   <script src="js/app.js"></script>
 </body>
+
 </html>

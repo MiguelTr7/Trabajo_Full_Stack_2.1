@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
   <!-- Header -->
   <header>
     <div class="logo">
@@ -29,7 +28,7 @@
     </div>
     <div class="cuenta" id="cuenta" aria-label="Cuenta"></div>
   </header>
-
+  
   <!-- Accesos -->
   <nav class="nav-secundario" aria-label="Accesos de usuario">
     <ul>
@@ -37,65 +36,68 @@
       <li><a href="registrarUsuario.html">Registrar usuario</a></li>
     </ul>
   </nav>
-
+  
   <main>
     <!-- Layout del detalle (apilado en móvil, 2 columnas en >=700px) -->
-    <section class="detalle">
-      <div class="detalle-img">
-        <img src="images/taladro.png" alt="Taladro percutor 13mm 750W">
+    <section class="detalle" id="producto-detalle">
+      <!-- Contenido que se carga dinámicamente con JavaScript -->
+      <div class="loading">
+        <p>Cargando producto...</p>
       </div>
-
-      <div class="detalle-info">
-        <h2>Taladro Percutor 13mm 750W</h2>
-        <p class="precio">$44.990</p>
-        <p>
-          Taladro percutor ideal para hogar y obra: 2 modos (rotación/percusión), 
-          mandril 13&nbsp;mm, velocidad variable y reversa para atornillar/desatornillar.
-        </p>
-
-        <!-- Ficha técnica breve (opcional, pero luce pro) -->
-        <ul class="lista-simple" style="margin:8px 0 16px">
-          <li><strong>Potencia:</strong> 750 W</li>
-          <li><strong>Velocidad:</strong> 0–3000 rpm</li>
-          <li><strong>Golpes por minuto:</strong> 0–48.000 gpm</li>
-          <li><strong>Matriz:</strong> Hormigón, madera y metal</li>
-          <li><strong>Incluye:</strong> Tope de profundidad y empuñadura lateral</li>
-          <li><strong>SKU:</strong> F002-TP13</li>
-        </ul>
-
+      
+      <!-- Estructura base para cuando se cargue el producto -->
+      <div class="detalle-img" style="display:none;">
+        <img src="images/taladro.png" alt="Producto" id="producto-imagen">
+      </div>
+      
+      <div class="detalle-info" style="display:none;">
+        <h2 id="producto-nombre">Nombre del producto</h2>
+        <p class="precio" id="producto-precio">$0</p>
+        <p id="producto-descripcion">Descripción del producto...</p>
+        
         <div class="detalle-btns">
-          <a class="btn btn-secundario" href="productos.html">Volver</a>
-
-          <!-- Botón que añade al carrito (con data-*) -->
-          <button class="btn btn-primario btn-add" type="button"
-                  data-id="F002" data-name="Taladro Percutor 13mm 750W" data-price="44990">
-            Añadir al carrito
+          <button class="btn btn-primario" id="agregar-carrito">
+            Agregar al carrito
+          </button>
+          <button class="btn btn-secundario" id="volver-productos">
+            Volver a productos
           </button>
         </div>
       </div>
     </section>
   </main>
-
-  <!-- Footer -->
+  
+  <!-- FOOTER - Usando la nueva estructura del CSS unificado -->
   <footer>
     <div class="inner">
-      <h3 class="footer-brand">FerreNova</h3>
-      <nav aria-label="Categorías">
-        <ul class="footer-links">
-          <li><a href="categoria-herramientas.html">Herramientas</a></li>
-          <li><a href="categoria-electricidad.html">Electricidad</a></li>
-          <li><a href="categoria-construccion.html">Construcción</a></li>
-        </ul>
-      </nav>
-      <form class="suscripcion" action="#" method="post">
-        <label class="sr-only" for="email">Suscríbete</label>
-        <input id="email" type="email" placeholder="tu correo" required>
-        <button type="submit">Suscribirme</button>
-      </form>
+      <div class="footer-brand">FerreNova</div>
+      
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="productos.html">Productos</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="blogs.html">Consejos</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+      
+      <div class="suscripcion">
+        <input type="email" placeholder="Tu email para ofertas" aria-label="Email para suscripción">
+        <button>Suscribirse</button>
+      </div>
+    </div>
+    
+    <div class="footer-info">
+      <p>Av. Diego Portales 1234, Puerto Montt | Tel: +56 65 234 5678</p>
+    </div>
+    
+    <div class="footer-copyright">
+      <p>&copy; 2024 FerreNova. Todos los derechos reservados.</p>
     </div>
   </footer>
-
-  <!-- JS del carrito -->
+  
+  <!-- JS del carrito y productos -->
+  <script src="js/productos.js"></script>
+  <script src="js/detalle.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
